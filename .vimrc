@@ -49,4 +49,3 @@ set complete+=kspell
 set ttymouse=sgr
 set laststatus=2
 set noshowmode
-let g:ycm_autoclose_preview_window_after_completion = 1
