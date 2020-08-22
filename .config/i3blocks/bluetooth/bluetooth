@@ -1,0 +1,42 @@
+#!/bin/bash
+
+isPowered=$(bluetoothctl -- show | grep Powered | awk '{print $2}')
+
+if [ $isPowered == 'yes' ]
+then	
+	isOn='yes'
+	#echo "ON"
+	MACS=$(bluetoothctl -- devices | awk '{print $2}')
+	for mac in $MACS
+	do
+		isConnected=$(bluetoothctl -- info $mac | grep Connected | awk '{print $2}')
+		if [ $isConnected == 'yes' ]
+		then
+			#echo "Connected"
+			name=$(bluetoothctl -- info $mac | grep Name | awk '{print $2,$3,$4,$5}')
+			#echo $name
+			break
+		else
+			#echo "Not connected"
+			nope='nope'
+		fi
+	done
+else
+	echo "OFF"
+	echo "OFF"
+	echo \#FF0000
+fi
+
+
+if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'no' ]
+then
+	echo "ON"
+	echo "ON"
+	echo \#ffffff
+fi
+if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'yes' ]
+then
+	echo $name
+	echo $name
+	echo \#ffffff
+fi

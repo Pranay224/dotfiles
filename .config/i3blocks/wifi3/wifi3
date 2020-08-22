@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+tmp1=$(nmcli general | awk '{print $4}' | grep -e "enabled" -e "limited")
+
+if [ "$tmp1" == 'enabled' ] || [ "$tmp1" == 'limited' ]
+then
+	isOn='yes'
+else
+	isOn='no'
+	echo "OFF"
+	echo "OFF"
+	echo \#FF0000
+fi
+
+tmp2=$(nmcli general | awk '{print $1}' | grep "connected")
+
+if [ "$tmp2" == 'connected' ]
+then
+	isConnected='yes'
+else
+	isConnected='no'
+fi
+
+if [ "$isConnected" == 'yes' ]
+then
+	name=$(nmcli connection | grep wlp1s0 | awk '{print $1}')
+fi
+
+if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'no' ]
+then
+	echo "ON"
+	echo "ON"
+	echo \#ffffff
+fi
+
+if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'yes' ]
+then
+	echo "$name"
+	echo "$name"
+	echo \#ffffff
+fi
