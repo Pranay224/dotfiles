@@ -64,7 +64,7 @@ def create_argparse():
 def get_updates():
     output = ''
     try:
-        output = check_output(['yay', '-Qu']).decode('utf-8')
+        output = check_output(['pacman', '-Qu']).decode('utf-8')
     except subprocess.CalledProcessError as exc:
         # checkupdates exits with 2 and no output if no updates are available.
         # we ignore this case and go on
@@ -116,7 +116,7 @@ if args.aur:
     updates += get_aur_updates()
 
 update_count = len(updates)
-update_count = update_count - 1
+update_count = update_count
 if update_count > 0:
     if update_count == 1:
       info = str(update_count)

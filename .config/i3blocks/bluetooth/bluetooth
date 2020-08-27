@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 isPowered=$(bluetoothctl -- show | grep Powered | awk '{print $2}')
 
-if [ $isPowered == 'yes' ]
+if [[ $isPowered == 'yes' ]]
 then	
 	isOn='yes'
 	#echo "ON"
@@ -10,7 +10,7 @@ then
 	for mac in $MACS
 	do
 		isConnected=$(bluetoothctl -- info $mac | grep Connected | awk '{print $2}')
-		if [ $isConnected == 'yes' ]
+		if [[ $isConnected == 'yes' ]]
 		then
 			#echo "Connected"
 			name=$(bluetoothctl -- info $mac | grep Name | awk '{print $2,$3,$4,$5}')
@@ -28,14 +28,15 @@ else
 fi
 
 
-if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'no' ]
+if [[ "$isOn" == 'yes' ]] && [[ "$isConnected" == 'no' ]]
 then
 	echo "ON"
 	echo "ON"
 	echo \#ffffff
 fi
-if [ "$isOn" == 'yes' ] && [ "$isConnected" == 'yes' ]
+if [[ "$isOn" == 'yes' ]] && [[ "$isConnected" == 'yes' ]]
 then
+	name=$(echo $name | xargs)
 	echo $name
 	echo $name
 	echo \#ffffff

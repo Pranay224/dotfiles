@@ -144,7 +144,7 @@ for_window [class="xdman-Main"] floating enable
 for_window [class="Yad"] floating enable
 for_window [window_role="GtkFileChooserDialog"] floating disable
 for_window [class="Kite"] reseize set width 50
-
+for_window [title="WhatsApp - Firefox Developer Edition"] move container to workspace number $ws4
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -190,7 +190,7 @@ set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color		 #ffffff
 set $inactive-text-color #676e7d
-set $urgent-bg-color     #e53935
+set $urgent-bg-color     #ff0000
 
 # window colors
 #                       border              background         text                 indicator
@@ -205,7 +205,7 @@ binding_mode	$bg-color	    $bg-color	       $text-color
 bar {
         status_command i3blocks -c /home/pranay/.config/i3blocks/config1.conf
 	height 35
-	binding_mode_indicator no	
+	binding_mode_indicator no
 	tray_output primary
 	tray_padding 0
 	colors {
@@ -219,44 +219,43 @@ bar {
 	}
 }
 
-exec_always nitrogen --restore
-bindsym $mod+shift+z exec ~/.config/i3/lock.sh
-exec_always picom -f
-bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
-bindsym $mod+shift+x exec xkill
-exec_always xrdb -merge ~/.Xresources
-exec_always setMouseSpeed
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+bindsym $mod+shift+z exec --no-startup-id ~/.config/i3/lock.sh
+exec_always --no-startup-id picom -f
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/'
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id setMouseSpeed
 
 mode "WiFi: 1.System0, 2.Pranay-dia" {
-  bindsym 1 exec nmcli device wifi list > /dev/null && nmcli device wifi connect System0; mode "default"
-  bindsym 2 exec nmcli device wifi list > /dev/null && nmcli device wifi connect Pranay-Dia; mode "default"
+  bindsym 1 exec --no-startup-id nmcli device wifi list > /dev/null && nmcli device wifi connect System0; mode "default"
+  bindsym 2 exec --no-startup-id nmcli device wifi list > /dev/null && nmcli device wifi connect Pranay-Dia; mode "default"
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
 bindsym $mod+shift+w mode "WiFi: 1.System0, 2.Pranay-dia"
 
 mode "JBL: 1.a2dp_sink, 2.hsp/hfp, 3.off" {
-  bindsym 1 exec pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 a2dp_sink; mode "default"
-  bindsym 2 exec pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 headset_head_unit; mode "default"
-  bindsym 3 exec pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 off; mode "default"
+  bindsym 1 exec --no-startup-id pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 a2dp_sink; mode "default"
+  bindsym 2 exec --no-startup-id pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 headset_head_unit; mode "default"
+  bindsym 3 exec --no-startup-id pacmd set-card-profile bluez_card.F4_BC_DA_06_6A_10 off; mode "default"
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
 bindsym $mod+shift+j mode "JBL: 1.a2dp_sink, 2.hsp/hfp, 3.off"
 
 mode "BT: 1.On, 2.Off, 3.JBL TUNE110BT, 4.Disconnect" {
-	bindsym 1 exec bluetoothctl -- power on; mode "default"
-	bindsym 2 exec bluetoothctl -- power off; mode "default"
-	bindsym 3 exec bluetoothctl -- connect F4:BC:DA:06:6A:10; mode "default"
-	bindsym 4 exec bluetoothctl -- disconnect; mode "default"
+	bindsym 1 exec --no-startup-id bluetoothctl -- power on; mode "default"
+	bindsym 2 exec --no-startup-id bluetoothctl -- power off; mode "default"
+	bindsym 3 exec --no-startup-id bluetoothctl -- connect F4:BC:DA:06:6A:10; mode "default"
+	bindsym 4 exec --no-startup-id bluetoothctl -- disconnect; mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
 bindsym $mod+shift+b mode "BT: 1.On, 2.Off, 3.JBL TUNE110BT, 4.Disconnect"
 
-exec xdman
-exec_always dunst
-exec ~/.config/i3/xidlelocker.sh 
+exec --no-startup-id xdman
+exec_always --no-startup-id dunst
+exec --no-startup-id ~/.config/i3/xidlelocker.sh 
 
 gaps inner 5
 gaps outer 0
@@ -277,4 +276,4 @@ bar {
 		binding_mode	$bg-color	    $bg-color	       $text-color 
 	}
 }
-exec notify-send "Hello There"
+exec --no-startup-id notify-send "Hello There"

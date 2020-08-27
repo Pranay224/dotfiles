@@ -1,0 +1,14 @@
+#!/bin/bash
+
+a=$(yay -Qu | awk '{print $1}' | wc -l)
+
+if [ $a == 0 ]
+then
+	echo "None"
+	echo "None"
+	echo \#FFFFFF
+else
+	echo $a
+	echo $a
+	echo \#FFFFFF
+fi

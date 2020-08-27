@@ -17,6 +17,7 @@ export ZSH="/home/pranay/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME='typewritten/typewritten'
 #ZSH_THEME='powerlevel10k/powerlevel10k'
+#ZSH_THEME='agnoster'
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -143,3 +144,6 @@ PATH=$(echo $PATH:/home/pranay/.local/bin)
 alias switchToJava8='sudo archlinux-java set java-8-openjdk'
 alias switchToJava14='sudo archlinux-java set java-14-openjdk'
 alias esp32repl='dterm 115200 8 n 1 /dev/ttyUSB0'
+alias qtileconfig='vim ~/.config/qtile/config.py'
+alias pacman='yay'
+export OPENCV_LOG_LEVEL=ERROR
