@@ -294,14 +294,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#2f343f"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
     background = "#2f343f"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 3
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
@@ -309,7 +309,7 @@
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#900000"
-    timeout = 5
+    timeout = 3
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
 
@@ -429,3 +429,15 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+#
+[brave]
+appname = "brave"
+format = ""
+
+[Brave]
+appname = "Brave"
+format = ""
+
+[Brave-browser]
+appname = "Brave-browser"
+format = ""
